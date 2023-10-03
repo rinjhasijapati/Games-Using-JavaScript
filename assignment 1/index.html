@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light</title>
+</head>
+<body>
+    <canvas
+    id="canva" style="border: 1px solid black;" height="300" width="400" ></canvas>
+    
+</body>
+
+<script>
+let canvas =document.getElementById("canva"); //paper
+let context =canvas.getContext("2d"); //pen
+
+context.beginPath();
+context.fillStyle = "black";
+context.rect(0,0,250,90);
+context.fill();
+
+context.beginPath();
+context.fillStyle = "red";
+context.arc(45,45,25,0,360); //for drawing circle (x,y,radius,start,end)
+context.fill();
+
+context.beginPath();
+context.fillStyle = "yellow";
+context.arc(120,45,25,0,360);
+context.fill();
+
+context.beginPath();
+context.fillStyle = "green";
+context.arc(195,45,25,0,360);
+context.fill();
+</script>
+</html>
+
