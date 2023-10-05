@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Loop</title>
+  </head>
+  <body>
+    <canvas
+      style="background-color: rgb(255, 119, 0)"
+      id="canvas"
+      width="400"
+      height="400"
+    ></canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let c = canvas.getContext("2d");
+
+      let ball = null; 
+
+      canvas.addEventListener("click", (event) => {
+        createBall(event.clientX, event.clientY);
+      });
+
+      function createBall(x, y) {
+          ball = {
+            x: x,
+            y: y,
+            radius: 30,
+            color: "black",
+            speedY: 1,
+          };
+      }
+
+      function renderBall() {
+        if (ball) {
+          c.clearRect(0, 0, 400, 400);
+          c.beginPath();
+          c.fillStyle = "black";
+          c.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+          c.fill();
+          ball.y += ball.speedY;
+        }
+      }
+
+      function update() {
+        renderBall();
+        requestAnimationFrame(update);
+      }
+
+      update();
+    </script>
+  </body>
+</html>
